@@ -249,7 +249,7 @@
     hihat.send();
 
     var hihat_half = new XMLHttpRequest();
-    hihat_half.open("Get","asset/hihat_half",true);  //  <---- replace this file with yours
+    hihat_half.open("Get","asset/hihat_half.wav",true);  //  <---- replace this file with yours
     hihat_half.responseType = "arraybuffer";
     hihat_half.onload = function(){
         context.decodeAudioData(hihat_half.response, function(buffer){buffers[7] = buffer;});
@@ -257,7 +257,7 @@
     hihat_half.send();
 
     var hihat_double = new XMLHttpRequest();
-    hihat_double.open("Get","asset/hihat_double",true);  //  <---- replace this file with yours
+    hihat_double.open("Get","asset/hihat_double.wav",true);  //  <---- replace this file with yours
     hihat_double.responseType = "arraybuffer";
     hihat_double.onload = function(){
         context.decodeAudioData(hihat_double.response, function(buffer){buffers[8] = buffer;});
