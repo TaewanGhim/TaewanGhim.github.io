@@ -17,7 +17,7 @@
 .full-height {
   height: 100%;
   background-color: red; /* For browsers that do not support gradients */
-    background-image: linear-gradient(to bottom right, rgb(232, 234, 240), rgb(235, 216, 219)); /* Standard syntax (must be last) */
+    background-image: linear-gradient(to bottom right, rgb(225, 200, 205), rgb(185, 176, 214)); /* Standard syntax (must be last) */
 }
 
   .center {
@@ -29,9 +29,9 @@
   
     button {
         padding: 5px;
-        background: linear-gradient(to bottom left, rgb(225, 200, 205), rgb(185, 176, 214));
-        border: none;
-        border-radius: 2px;
+        background: rgba(150,255,245,20);
+        border: rgba(150,255,245,255);
+        border-radius: 5px;
         outline: none;
         width:120px;
         height:120px;
@@ -295,6 +295,11 @@
             keyboardUp(key);
         }, false);
     }
+
+
+    var source = null;
+    console.log(element);
+
     function playdrum(i) {
        
          source = context.createBufferSource();
@@ -308,6 +313,7 @@
         gain_nodes[i].gain.value = db2gain(changedvalue);
         document.getElementById(volume_label_id[i]).innerHTML = 'Volume:  ' + changedvalue + 'dB'; 
     }
+
     function db2gain(db_gain) {
         var gain = 1.0;
          gain = Math.pow(10, db_gain/20);
@@ -315,6 +321,7 @@
         
         return gain
     }
+    
     // keyboard mapping 
     function keyboardDown(key) {
         switch (key.keyCode) {
