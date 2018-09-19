@@ -22,8 +22,8 @@
   
     button {
         padding: 5px;
-        background: rgba(150,255,245,20);
-        border: rgba(150,255,245,255);
+        background: none;
+        border: 2px solid white;
         border-radius: 5px;
         outline: none;
         width:120px;
@@ -115,67 +115,67 @@
 <br>
 
 <div id = "kick" align = "center">
-    <button id="kickPad" onmousedown="playdrum(0)" > Kick ('s' key)</button>
+    <button id="kickPad" onmousedown="playdrum(0)" > <p>Kick</p> <p>('s' key)</p></button>
     <p id="kickVolLabel"></p>
     <input class="volume" onchange="changegain(0,this.value)" id="kickVol" title="Kick volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "kick_boom" align = "center">
-    <button id="kick_boomPad" onmousedown="playdrum(1)" > Kick_boom ('d' key)</button>
+    <button id="kick_boomPad" onmousedown="playdrum(1)" ><p>Kick_boom</p> <p>('d' key)</p></button>
     <p id="kick_boomVolLabel"></p>
     <input class="volume" onchange="changegain(1,this.value)" id="kick_boomVol" title="kick_boom volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "kick_double" align = "center">
-    <button id="kick_doublePad" onmousedown="playdrum(2)" > Kick_double ('f' key)</button>
+    <button id="kick_doublePad" onmousedown="playdrum(2)" > <p>Kick_double</p> <p>('f' key)</p></button>
     <p id="kick_doubleVolLabel"></p>
     <input class="volume" onchange="changegain(2,this.value)" id="kick_doubleVol" title="kick_double volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "snare" align = "center">
-    <button id="snarePad" onmousedown="playdrum(3)" > Snare ('j' key)</button>
+    <button id="snarePad" onmousedown="playdrum(3)" > <p>Snare</p> <p>('j' key)</p></button>
     <p id="snareVolLabel"></p>
     <input class="volume" onchange="changegain(3,this.value)" id="snareVol" title="Snare volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "snare_pf" align = "center">
-    <button id="snare_pfPad" onmousedown="playdrum(4)" > Snare_pf ('k' key)</button>
+    <button id="snare_pfPad" onmousedown="playdrum(4)" > <p>Snare_pf</p> <p>('k' key)</p></button>
     <p id="snare_pfVolLabel"></p>
     <input class="volume" onchange="changegain(4,this.value)" id="snare_pfVol" title="snare_pf volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "snare_fx" align = "center">
-    <button id="snare_fxPad" onmousedown="playdrum(5)" > Snare_fx ('l' key)</button>
+    <button id="snare_fxPad" onmousedown="playdrum(5)" > <p>Snare_fx</p> <p>('l' key)</p></button>
     <p id="snare_fxVolLabel"></p>
     <input class="volume" onchange="changegain(5,this.value)" id="snare_fxVol" title="snare_fx volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "hihat" align = "center">
-    <button id="hihatPad" onmousedown="playdrum(6)"> Hihat ('w' key)</button>
+    <button id="hihatPad" onmousedown="playdrum(6)"> <p>Hihat</p> <p>('w' key)</p></button>
     <p id="hihatVolLabel"></p>
     <input class="volume" onchange="changegain(6,this.value)" id="hihatVol" title="Hihat volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "hihat_half" align = "center">
-    <button id="hihat_halfPad" onmousedown="playdrum(7)"> Hihat_half ('e' key)</button>
+    <button id="hihat_halfPad" onmousedown="playdrum(7)"> <p>Hihat_half</p> <p>('e' key)</P></button>
     <p id="hihat_halfVolLabel"></p>
     <input class="volume" onchange="changegain(7,this.value)" id="hihat_halfVol" title="hihat_half volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "hihat_double" align = "center">
-    <button id="hihat_doublePad" onmousedown="playdrum(8)"> Hihat_double ('r' key)</button>
+    <button id="hihat_doublePad" onmousedown="playdrum(8)"> <p>Hihat_double</p> <p>('r' key)</p></button>
     <p id="hihat_doubleVolLabel"></p>
     <input class="volume" onchange="changegain(8,this.value)" id="hihat_doubleVol" title="hihat_double volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "cymbal" align = "center">
-    <button id="cymbalPad" onmousedown="playdrum(9)"> Cymbal ('u' key)</button>
+    <button id="cymbalPad" onmousedown="playdrum(9)"> <p>Cymbal</p> <p>('u' key)</p></button>
     <p id="cymbalVolLabel"></p>
     <input class="volume" onchange="changegain(9,this.value)" id="cymbalVol" title="Cymbal volume" type="range" min="-24" max ="0" value = "-12">
 </div>
 
 <div id = "cymbal_fx" align = "center">
-    <button id="cymbal_fxPad" onmousedown="playdrum(10)"> Cymbal_fx ('i' key)</button>
+    <button id="cymbal_fxPad" onmousedown="playdrum(10)"> <p>Cymbal_fx</p> <p>('i' key)</p></button>
     <p id="cymbal_fxVolLabel"></p>
     <input class="volume" onchange="changegain(10,this.value)" id="cymbal_fxVol" title="cymbal_fx volume" type="range" min="-24" max ="0" value = "-12">
 </div>
