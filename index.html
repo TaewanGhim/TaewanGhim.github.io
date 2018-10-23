@@ -1,13 +1,65 @@
-<!DOCTYPE html><html><head>
-    <script src="p5.min.js"></script>
-    <script src="p5.dom.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<!DOCTYPE html>
+<html lang="">
+  <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+    body{
+       margin: 2%;
+    }
+    .project_container {
+        margin:1%;
+        width:100%;
+    }
+    .project {
+        position: relative;
+        margin:1%;
+        padding:1%;
+        background-color: ghostwhite;
+    }
+    </style>
 
+</head>
+<body>
+    <h2>CTP431 2018: Music and Audio Computing</h2>
+
+    <div class="row project_container">
+        <div class="col-6 project">
+            <p><a href="beatbox.html">Project1: BeatBox</a></p>
+        </div>
+        <div class="col-6 project">
+            <p><a href="music_vis.html">Project2: Music Visualizer</a></p>
+        </div>
+    </div>
+    <div class="row project_container">
+        <div class="col-6 project">
+            <p>Project3: Rhythm Sequencer</p>
+        </div>
+        <div class="col-6 project">
+            <p>Final Project</p>
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+</doctype>
+
+
+    <title>p5.js example</title>
+    <style> body {padding: 0; margin: 0;} </style>
+    <script src="processing.js"></script>
+    <script src="../p5.min.js"></script>
+    <script src="../addons/p5.dom.min.js"></script>
+    <script src="../addons/p5.sound.min.js"></script>
+    <script src="sketch.js"></script>
   </head>
   <body>
-    <script src="sketch.js"></script>
-  
+    <h1>Processing.js Test</h1>
+     <p>CTP431 HW_2:</p>
+     <canvas data-processing-sources="build_test.pde"></canvas>
 
-</body></html>
+  </body>
+</html>
