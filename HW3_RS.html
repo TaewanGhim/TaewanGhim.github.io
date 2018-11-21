@@ -66,16 +66,15 @@ var sequencer = new Nexus.Sequencer('#sequencer',{
  'rows': 6,
  'columns': 16,
 })
-var curr_bpm = 150;
-
+var curr_bpm = 250;
 sequencer.colorize("fill","#888")
 // initial pattern
-sequencer.matrix.set.row(0,[1,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0]);
-sequencer.matrix.set.row(1,[0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1]);
-sequencer.matrix.set.row(2,[0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1]);
-sequencer.matrix.set.row(3,[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]);
-sequencer.matrix.set.row(4,[0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0]);
-sequencer.matrix.set.row(5,[1,0,0,0,1,1,0,0,1,0,0,0,1,1,0,0]);
+// sequencer.matrix.set.row(0,[0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0]); // high tom1
+// sequencer.matrix.set.row(1,[0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]); // mid tom2
+sequencer.matrix.set.row(2,[0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0]); // low tom3 
+sequencer.matrix.set.row(3,[0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,1]); // hihat
+sequencer.matrix.set.row(4,[0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1]); // snare 
+sequencer.matrix.set.row(5,[1,0,1,0,0,0,0,1,0,0,1,1,0,0,0,1]); // kick 
 // play/stop button
 var play_button = new Nexus.TextButton('#play_button',{
   'size': [150,50],
@@ -89,15 +88,15 @@ var tempo_dial = new Nexus.Dial('#tempo_dial',{
   'size': [75,75],
   'interaction': 'radial', // "radial", "vertical", or "horizontal"
   'mode': 'absolute', // "absolute" or "relative"
-  'min': 60,
-  'max': 250,
+  'min': 100,
+  'max': 350,
   'step': 1,
   'value': curr_bpm,
 })
 var tempo_number = new Nexus.Number('#tempo_number',{
   'size': [60,30],
   'value': curr_bpm,
-  'min': 60,
+  'min': 100,
   'max': 250,
   'step': 1
 })
@@ -160,12 +159,10 @@ play_button.on('change',function(v) {
 tempo_dial.on('change',function(v) {
 	// convert BPM to internal in milisecond
 	// note that 4 steps correspond to one beat in the sequencer
-	var inverval = 60000/v;   // <-- correspond to "one beat"
+	var inverval = 60000/v;   // <-- replace this with the BPM-to-ms conversion equation
 	curr_bpm = v;
 	sequencer.interval.ms(inverval);
 })
-
-
 filter_onoff.on('change',function(v) {
 	set_filter_onoff(v);
 })
