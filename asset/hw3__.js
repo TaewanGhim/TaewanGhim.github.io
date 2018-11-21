@@ -1,12 +1,12 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext;
 var context = new AudioContext();
-// var context = new (window.AudioContext || window.webkitAudioContext)();
-
-// resonant filter variables 
+ 
 var filter_onoff = false;
 var filter_freq = 1000;
 var filter_q = 1;
-
+set_filter_onoff(status)
+set_filter_freq(freq)
+set_filter_q(q)
 
 // select a preset
 window.onload=function(){
@@ -40,16 +40,15 @@ TR808Tone1.prototype.setup = function() {
 
 	// oscillator	
 	this.osc = this.context.createOscillator();
-
-	// lowpass filter 
-	var noiseFilter = this.context.createBiquadFilter();
-	// console.log(noiseFilter);
-	noiseFilter.type = 'lowpass';
-	noiseFilter.frequency.value = filter_freq;
-	noiseFilter.Q.value = filter_q;
 	
 	// envelope
 	this.gain = this.context.createGain();
+
+	// lowpass filter 
+	var noiseFilter = this.context.createBiquadFilter();
+	noiseFilter.type = 'lowpass';
+	noiseFilter.frequency.value = filter_freq;
+	noiseFilter.Q.value = filter_q;
 
 	// connect
 	if (filter_onoff){
@@ -61,6 +60,10 @@ TR808Tone1.prototype.setup = function() {
 	}
 	this.gain.connect(this.context.destination)		
 };
+// 	this.osc.connect(this.gain);
+// 	this.gain.connect(this.context.destination)		
+// };
+
 
 
 // control
@@ -118,52 +121,21 @@ TR808Tone2.prototype.setup = function() {
 	// highpass filter 
 	var noiseFilter = this.context.createBiquadFilter();
 	noiseFilter.type = 'highpass';
-	// noiseFilter.frequency.value = this.highpass_frequency;
-	// noiseFilter.Q.value = 1;
+	//noiseFilter.frequency.value = this.highpass_frequency;
+	//noiseFilter.Q.value = 1;
 	noiseFilter.frequency.value = filter_freq;
 	noiseFilter.Q.value = filter_q;
-
-	// distortion
-	var distortion = this.context.createWaveShaper();
-	distortion.curve = makeDistortionCurve(400);
-	// console.log(distortion.curve);
-	distortion.oversampe = '4x';
-
-	// convolver 
-	// var convolver = this.context.createConvolver();
-
-	// var soundSource;
-
-	// var ajaxRequest = new XMLHttpRequest();
-
-	// ajaxRequest.open('GET', 'http://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg', true);
-
-	// ajaxRequest.responseType = 'arraybuffer';
-
-	// ajaxRequest.onload = function() {
-	// 	var audioData = ajaxRequest.response;
-	// 	context.decodeAudioData(audioData, function(buffer) {
-	// 		soundSource = context.createBufferSource();
-	// 		convolver.buffer = buffer;
-	// 	  }, function(e){ console.log("Error with decoding audio data" + e.err);});
-	  
-	// 	//soundSource.connect(audioCtx.destination);
-	// 	//soundSource.loop = true;
-	// 	//soundSource.start();
-	//   };
-	  
-	//   ajaxRequest.send();
-
+	//this.noise.connect(noiseFilter);
 	
 	// amp envelop
 	this.noiseEnvelope = this.context.createGain();
+	
+// 	noiseFilter.connect(this.noiseEnvelope);
+// 	this.noiseEnvelope.connect(this.context.destination);
+// };
 
 	if (filter_onoff) {  
 		this.noise.connect(noiseFilter);
-		noiseFilter.connect(distortion);
-		// distortion.connect(convolver);
-		// convolver.connect(this.noiseEnvelope);
-		distortion.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
 	} else {
 		this.noise.connect(this.noiseEnvelope);
@@ -180,20 +152,6 @@ TR808Tone2.prototype.trigger = function(time) {
 	this.noise.stop(time + this.amp_decaytime);
 };
 
-
-function makeDistortionCurve(amount) {
-	var k = typeof amount === 'number' ? amount : 50,
-	  n_samples = 44100,
-	  curve = new Float32Array(n_samples),
-	  deg = Math.PI / 180,
-	  i = 0,
-	  x;
-	for ( ; i < n_samples; ++i ) {
-	  x = i * 2 / n_samples - 1;
-	  curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
-	}
-	return curve;
-  };
 
 function keyboardDown(key) {
 
@@ -367,7 +325,7 @@ function MIDIMessageEventHandler(event) {
 	}
 }	
 
-// resonant filter functions 
+
 function set_filter_onoff(status){
 	if (status == false){
 		filter_onoff = false;
@@ -384,3 +342,7 @@ function set_filter_freq(freq){
 function set_filter_q (q) {
 	filter_q = q;
 }
+
+
+
+
