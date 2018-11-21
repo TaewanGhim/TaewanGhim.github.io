@@ -27,7 +27,7 @@ p.seq_Label {
 }
 
 p.panel_label {
-    font-family: "Arial", Gadget, sans-serif;
+    font-family: "Courier", Gadget, sans-serif;
     font-size: 18px;
     font-style: normal;
     font-variant: normal;
@@ -76,6 +76,7 @@ p.number{
 
 #play_button{
     margin: 20px 10px 10px 20px;
+    background: rgb(100, 100, 100);
     float:left;
 }
 
@@ -109,7 +110,7 @@ p.number{
 
 #filter1{
     padding:10px;
-    margin: 5px 0px 0px 0px;
+    margin: 5px 0px 0px 5px;
     background: rgb(220, 220, 220);
     width:140px;
     height:150px;
@@ -118,7 +119,7 @@ p.number{
 
 #filter2{
     padding:10px;
-    margin: 5px 0px 0px 0px;
+    margin: 5px 0px 0px 5px;
     background: rgb(220, 220, 220);
     width:140px;
     height:150px;
