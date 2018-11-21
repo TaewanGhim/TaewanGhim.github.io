@@ -4,9 +4,9 @@ var context = new AudioContext();
 var filter_onoff = false;
 var filter_freq = 1000;
 var filter_q = 1;
-set_filter_onoff(status)
-set_filter_freq(freq)
-set_filter_q(q)
+//set_filter_onoff(status)
+//set_filter_freq(freq)
+//set_filter_q(q)
 
 // select a preset
 window.onload=function(){
@@ -117,22 +117,27 @@ TR808Tone2.prototype.setup = function() {
 	// highpass filter 
 	var noiseFilter = this.context.createBiquadFilter();
 	noiseFilter.type = 'highpass';
-	noiseFilter.frequency.value = this.highpass_frequency;
-	noiseFilter.Q.value = 1;
-	this.noise.connect(noiseFilter);
+	//noiseFilter.frequency.value = this.highpass_frequency;
+	//noiseFilter.Q.value = 1;
+	noiseFilter.frequency.value = filter_freq;
+	noiseFilter.Q.value = filter_q;
+	//this.noise.connect(noiseFilter);
 	
 	// amp envelop
 	this.noiseEnvelope = this.context.createGain();
-
-	if (filter_onoff) {  
-		this.noise.connect(noiseFilter);
-		distortion.connect(this.noiseEnvelope);
-		noiseFilter.connect(this.noiseEnvelope);
-	} else {
-		this.noise.connect(this.noiseEnvelope);
-	}
+	noiseFilter.connect(this.noiseEnvelope);
 	this.noiseEnvelope.connect(this.context.destination);
 };
+
+// 	if (filter_onoff) {  
+// 		this.noise.connect(noiseFilter);
+// 		distortion.connect(this.noiseEnvelope);
+// 		noiseFilter.connect(this.noiseEnvelope);
+// 	} else {
+// 		this.noise.connect(this.noiseEnvelope);
+// 	}
+// 	this.noiseEnvelope.connect(this.context.destination);
+// };
 
 TR808Tone2.prototype.trigger = function(time) {
 	this.setup();
