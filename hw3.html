@@ -70,15 +70,15 @@ var sequencer = new Nexus.Sequencer('#sequencer',{
  'rows': 6,
  'columns': 16,
 })
-var curr_bpm = 250;
-sequencer.colorize("fill","#555")
+var curr_bpm = 260;
+sequencer.colorize("fill","#fffff")
 // initial pattern
-// sequencer.matrix.set.row(0,[0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0]); // high tom1
-// sequencer.matrix.set.row(1,[0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]); // mid tom2
-sequencer.matrix.set.row(2,[0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0]); // low tom3 
-sequencer.matrix.set.row(3,[0,1,0,1,0,1,0,1,0,1,1,0,1,0,1,1]); // hihat
-sequencer.matrix.set.row(4,[0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1]); // snare 
-sequencer.matrix.set.row(5,[1,0,1,0,0,0,0,1,0,0,1,1,0,0,0,1]); // kick 
+sequencer.matrix.set.row(0,[0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1]); // high tom1
+sequencer.matrix.set.row(1,[0,1,0,0,1,0,0,0,0,0,0,1,1,0,0,1]); // mid tom2
+sequencer.matrix.set.row(2,[0,1,0,0,0,0,0,0,1,1,0,0,0,0,0,1]); // low tom3 
+sequencer.matrix.set.row(3,[1,0,0,1,0,0,1,0,1,0,0,1,1,0,1,0]); // hihat
+sequencer.matrix.set.row(4,[0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,1]); // snare 
+sequencer.matrix.set.row(5,[1,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1]); // kick 
 // play/stop button
 var play_button = new Nexus.TextButton('#play_button',{
   'size': [150,50],
