@@ -51,15 +51,19 @@ TR808Tone1.prototype.setup = function() {
 	noiseFilter.Q.value = filter_q;
 
 	// connect
-	if (filter_onoff){
-		this.osc.connect(noiseFilter);
-		noiseFilter.connect(this.gain);
-	} 
-	else {
-		this.osc.connect(this.gain);
-	}
+// 	if (filter_onoff){
+// 		this.osc.connect(noiseFilter);
+// 		noiseFilter.connect(this.gain);
+// 	} 
+// 	else {
+// 		this.osc.connect(this.gain);
+// 	}
+// 	this.gain.connect(this.context.destination)		
+// };
+	this.osc.connect(this.gain);
 	this.gain.connect(this.context.destination)		
 };
+
 
 
 // control
