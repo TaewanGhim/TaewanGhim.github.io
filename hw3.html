@@ -80,7 +80,10 @@ sequencer.matrix.set.row(3,[1,0,0,1,0,0,1,0,1,0,0,1,1,0,1,0]); // hihat
 sequencer.matrix.set.row(4,[0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,1]); // snare 
 sequencer.matrix.set.row(5,[1,0,0,0,1,0,0,1,1,0,0,1,1,0,0,1]); // kick 
 // play/stop button
+Nexus.colors.accent = "ff0"
+Nexus.colors.fill = "#333"
 var play_button = new Nexus.TextButton('#play_button',{
+  'value': 0.5,
   'size': [150,50],
   'state': false,
   'text': 'Play',
