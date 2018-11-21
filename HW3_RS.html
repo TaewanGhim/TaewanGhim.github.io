@@ -4,9 +4,9 @@
 <head>
 	<meta charset="utf-8" />
 	<title> Homework #3: Music Synthesizer  </title>
-	<script type="text/javascript" src="assets/project3/NexusUI.js"></script>
-	<script type="text/javascript" src="assets/project3/tr808.js"></script>
-	<link  href='assets/project3/hw3.css' rel='stylesheet'>
+	<script type="text/javascript" src="asset/NexusUI.js"></script>
+	<script type="text/javascript" src="asset/hw3.js"></script>
+	<link  href='asset/hw3.css' rel='stylesheet'>
 </head>
 
 <body>
@@ -69,10 +69,10 @@ var sequencer = new Nexus.Sequencer('#sequencer',{
 var curr_bpm = 150;
 sequencer.colorize("fill","#888")
 // initial pattern
-sequencer.matrix.set.row(0,[0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0]);
-sequencer.matrix.set.row(1,[0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0]);
-sequencer.matrix.set.row(2,[0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1]);
-sequencer.matrix.set.row(3,[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]);
+sequencer.matrix.set.row(0,[1,0,0,0,1,0,0,0,0,0,1,1,0,0,0,0]);
+sequencer.matrix.set.row(1,[0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1]);
+sequencer.matrix.set.row(2,[0,0,0,1,0,0,0,1,0,0,0,0,0,0,1,1]);
+sequencer.matrix.set.row(3,[1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0]);
 sequencer.matrix.set.row(4,[0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0]);
 sequencer.matrix.set.row(5,[1,0,0,0,1,1,0,0,1,0,0,0,1,1,0,0]);
 // play/stop button
@@ -163,6 +163,8 @@ tempo_dial.on('change',function(v) {
 	curr_bpm = v;
 	sequencer.interval.ms(inverval);
 })
+
+
 filter_onoff.on('change',function(v) {
 	set_filter_onoff(v);
 })
