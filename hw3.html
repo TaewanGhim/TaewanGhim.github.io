@@ -8,12 +8,23 @@
 	<script type="text/javascript" src="asset/hw3/hw3.js"></script>
 	<link  href='asset/hw3/hw3.css' rel='stylesheet'>
 </head>
+<style>
+  
+  html, body {
+  height: 100%;
+  margin: 0;
+}
+.full-height {
+  height: 100%;
+  background-color: #3c3c3c; /* For browsers that do not support gradients */ /* Standard syntax (must be last) */
+}
+</style>
 
 <body>
 
-	<h1> <font color="yellow">Homework #3: Rhythm Machine </font></h1>
+	<h1> <font color=rgb(255, 99, 71, 0.5)>Homework #3: Rhythm Machine </font></h1>
 
-	<div style="background-color:rgb(255, 99, 71);" id="seq_label">
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="seq_label">
 	<p class="seq_Label"> Tom3 </p>
 	<p class="seq_Label"> Tom2 </p>
 	<p class="seq_Label"> Tom1 </p>
@@ -21,32 +32,32 @@
 	<p class="seq_Label"> Snare </p>
 	<p class="seq_Label"> Kick </p>
 	</div>
-	<div id="sequencer"></div>
-	<div id="transport">
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="sequencer"></div>
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="transport">
 		<p class="panel_label"> Play/Stop </p>
 		<p id="play_button"> </p>
 	</div>
-	<div id="tempo">
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="tempo">
 		<div>
 			<p class="panel_label"> Tempo (bpm)</p>
 		</div>
 		<div id="tempo_dial"></div>
 		<div id="tempo_number"></div>
 	</div>
-	<div id="filter">
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="filter">
 		<div>
 			<p class="panel_label"> Filter On/Off</p>
 		</div>
 		<div id="filter_onoff"></div>
 	</div>
-	<div id="filter1">
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="filter1">
 		<div>
 			<p class="panel_label">  frequency</p>
 		</div>
 		<div id="filter_dial1"></div>
 		<div id="filter_number1"></div>
 	</div>
-	<div id="filter2">
+	<div style="background-color:rgb(255, 99, 71, 0.5);" id="filter2">
 		<div>
 			<p class="panel_label"> resonance</p>
 		</div>
