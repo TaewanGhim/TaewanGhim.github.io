@@ -7,7 +7,7 @@ var filter_onoff = false;
 var filter_freq = 1000;
 var filter_q = 1;
 
-
+document.body.style.backgroundColor = "#000"
 // select a preset
 window.onload=function(){
 
