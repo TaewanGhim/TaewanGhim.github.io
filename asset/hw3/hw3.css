@@ -92,20 +92,20 @@ p.number{
 }
 
 #tempo_dial{
-    background-color: #ff0;
+    
     margin: 5px 0px 0px 55px;
     clear:left;
 }
 
 #tempo_number{
-    background-color: #ff0;
+    
     color:white;
     margin: 5px 0px 0px 60px;
     clear:left;
 }
 
 #filter{
-    background-color: #ff0;
+    
     padding:10px;
     margin: 5px 0px 0px 5px;
     background: rgb(120, 120, 120);
@@ -115,7 +115,7 @@ p.number{
 }
 
 #filter1{
-    background-color: #ff0;
+    
     padding:10px;
     margin: 5px 0px 0px 5px;
     background: rgb(120, 120, 120);
@@ -125,7 +125,7 @@ p.number{
 }
 
 #filter2{
-    background-color: #ff0;
+    
     padding:10px;
     margin: 5px 0px 0px 5px;
     background: rgb(120, 120, 120);
@@ -135,13 +135,13 @@ p.number{
 }
 
 #filter_dial1{
-    background-color: #ff0;
+   
     margin: 5px 0px 0px 10px;
     clear:left;
 }
 
 #filter_number1{
-    background-color: #ff0;
+    
     color:white;
     margin: 5px 0px 0px 15px;
     clear:left;
@@ -149,14 +149,14 @@ p.number{
 
 
 #filter_dial2{
-    background-color: #ff0;
+   
     margin: 5px 0px 0px 10px;
     clear:left;
 }
 
 
 #filter_number2{
-    background-color: #ff0;
+   
     color:white;
     margin: 5px 0px 0px 15px;
     clear:left;
