@@ -129,30 +129,7 @@ TR808Tone2.prototype.setup = function() {
 	// console.log(distortion.curve);
 	distortion.oversampe = '4x';
 
-	// convolver 
-	// var convolver = this.context.createConvolver();
-
-	// var soundSource;
-
-	// var ajaxRequest = new XMLHttpRequest();
-
-	// ajaxRequest.open('GET', 'http://mdn.github.io/voice-change-o-matic/audio/concert-crowd.ogg', true);
-
-	// ajaxRequest.responseType = 'arraybuffer';
-
-	// ajaxRequest.onload = function() {
-	// 	var audioData = ajaxRequest.response;
-	// 	context.decodeAudioData(audioData, function(buffer) {
-	// 		soundSource = context.createBufferSource();
-	// 		convolver.buffer = buffer;
-	// 	  }, function(e){ console.log("Error with decoding audio data" + e.err);});
-	  
-	// 	//soundSource.connect(audioCtx.destination);
-	// 	//soundSource.loop = true;
-	// 	//soundSource.start();
-	//   };
-	  
-	//   ajaxRequest.send();
+	
 
 	
 	// amp envelop
