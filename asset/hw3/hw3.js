@@ -159,9 +159,9 @@ TR808Tone2.prototype.trigger = function(time) {
 
 function makeDistortionCurve(amount) {
 	var k = typeof amount === 'number' ? amount : 50,
-	  n_samples = 44100,
+	  n_samples = 22100,
 	  curve = new Float32Array(n_samples),
-	  deg = Math.PI / 180,
+	  deg = Math.PI / 90,
 	  i = 0,
 	  x;
 	for ( ; i < n_samples; ++i ) {
@@ -202,7 +202,7 @@ function keyboardDown(key) {
 
 function play_kick()
 {
-	var kick = new TR808Tone1(context, 150, 'exp', 2, 0.6);
+	var kick = new TR808Tone1(context, 50, 'exp', 2, 0.6);
 	var now = context.currentTime;
 	
 	kick.trigger(now);		
@@ -210,7 +210,7 @@ function play_kick()
 
 function play_lowtom()
 {
-	var low_tom = new TR808Tone1(context, 200, 'linear', 1, 0.3);
+	var low_tom = new TR808Tone1(context, 150, 'linear', 1, 0.3);
 	var now = context.currentTime;
 	
 	low_tom.trigger(now);		
@@ -227,7 +227,7 @@ function play_midtom()
 
 function play_hightom()
 {
-	var high_tom = new TR808Tone1(context, 400, 'linear', 1, 0.3);
+	var high_tom = new TR808Tone1(context, 600, 'linear', 1, 0.3);
 	var now = context.currentTime;
 	
 	high_tom.trigger(now);		
@@ -235,7 +235,7 @@ function play_hightom()
 
 function play_snare()
 {
-	var snare = new TR808Tone2(context, 500, 0.5, 0.2);
+	var snare = new TR808Tone2(context, 700, 0.5, 0.2);
 	var now = context.currentTime;
 	
 	snare.trigger(now);		
