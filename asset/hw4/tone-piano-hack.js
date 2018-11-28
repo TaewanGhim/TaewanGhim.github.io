@@ -1,0 +1,3 @@
+
+
+window.tone = window.Tone;
