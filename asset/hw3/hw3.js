@@ -176,17 +176,24 @@ TR808Tone2.prototype.trigger = function(time) {
 
 
 
-
-function playSynth(){
-	synthSource = audioCtx.createBufferSource();
+playSynth.onclick = function() {
+  synthSource = audioCtx.createBufferSource();
   synthSource.buffer = buffers[2];
   synthSource.loop = true;
   synthSource.start();
   synthSource.connect(synthDelay);
   synthDelay.connect(destination);
   this.setAttribute('disabled', 'disabled');
-
 }
+
+stopSynth.onclick = function() {
+  synthSource.disconnect(synthDelay);
+  synthDelay.disconnect(destination);
+  synthSource.stop();
+  playSynth.removeAttribute('disabled');
+}
+
+
 var delay1;
 rangeSynth.oninput = function() {
   delay1 = rangeSynth.value;
