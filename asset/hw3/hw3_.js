@@ -19,7 +19,7 @@ window.onload=function(){
 	if (navigator.requestMIDIAccess)
         navigator.requestMIDIAccess().then( onMIDIInit, onMIDIReject );
     else
-        alert("No MIDI support present in your browser.  You're gonna have a bad time.")
+        alert("...")
 
 }
 

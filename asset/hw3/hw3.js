@@ -123,12 +123,28 @@ TR808Tone2.prototype.setup = function() {
 	noiseFilter.Q.value = filter_q;
 
 	// distortion
-	var distortion = this.context.createWaveShaper();
-	distortion.curve = makeDistortionCurve(400);
-	// console.log(distortion.curve);
-	distortion.oversampe = '4x';
+	// var distortion = this.context.createWaveShaper();
+	// distortion.curve = makeDistortionCurve(400);
+	// // console.log(distortion.curve);
+	// distortion.oversampe = '4x';
 
 	
+
+	
+	// // amp envelop
+	// this.noiseEnvelope = this.context.createGain();
+
+	// if (filter_onoff) {  
+	// 	this.noise.connect(noiseFilter);
+	// 	noiseFilter.connect(distortion);
+	// 	// distortion.connect(convolver);
+	// 	// convolver.connect(this.noiseEnvelope);
+	// 	distortion.connect(this.noiseEnvelope);
+	// 	noiseFilter.connect(this.noiseEnvelope);
+
+	var synthDelay = audioCtx.createDelay(5.0);
+
+	var synthSource;
 
 	
 	// amp envelop
@@ -136,11 +152,12 @@ TR808Tone2.prototype.setup = function() {
 
 	if (filter_onoff) {  
 		this.noise.connect(noiseFilter);
-		noiseFilter.connect(distortion);
-		// distortion.connect(convolver);
+		noiseFilter.connect(synthDelay);
+
 		// convolver.connect(this.noiseEnvelope);
-		distortion.connect(this.noiseEnvelope);
+		synthDelay.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
+
 	} else {
 		this.noise.connect(this.noiseEnvelope);
 	}
@@ -157,19 +174,27 @@ TR808Tone2.prototype.trigger = function(time) {
 };
 
 
-function makeDistortionCurve(amount) {
-	var k = typeof amount === 'number' ? amount : 50,
-	  n_samples = 22100,
-	  curve = new Float32Array(n_samples),
-	  deg = Math.PI / 90,
-	  i = 0,
-	  x;
-	for ( ; i < n_samples; ++i ) {
-	  x = i * 2 / n_samples - 1;
-	  curve[i] = ( 3 + k ) * x * 20 * deg / ( Math.PI + k * Math.abs(x) );
-	}
-	return curve;
-  };
+
+
+
+function playSynth(){
+	synthSource = audioCtx.createBufferSource();
+  synthSource.buffer = buffers[2];
+  synthSource.loop = true;
+  synthSource.start();
+  synthSource.connect(synthDelay);
+  synthDelay.connect(destination);
+  this.setAttribute('disabled', 'disabled');
+
+}
+var delay1;
+rangeSynth.oninput = function() {
+  delay1 = rangeSynth.value;
+  synthDelay.delayTime.setValueAtTime(delay1, audioCtx.currentTime);
+}
+
+
+
 
 function keyboardDown(key) {
 
