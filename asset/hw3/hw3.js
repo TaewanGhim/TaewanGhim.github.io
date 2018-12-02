@@ -122,7 +122,7 @@ TR808Tone2.prototype.setup = function() {
 	noiseFilter.frequency.value = filter_freq;
 	noiseFilter.Q.value = filter_q;
 
-	// distortion
+	//
 	// var distortion = this.context.createWaveShaper();
 	// distortion.curve = makeDistortionCurve(400);
 	// // console.log(distortion.curve);
@@ -142,17 +142,14 @@ TR808Tone2.prototype.setup = function() {
 	// 	distortion.connect(this.noiseEnvelope);
 	// 	noiseFilter.connect(this.noiseEnvelope);
 
-	var synthDelay = audioCtx.createDelay(5.0);
-
-	var synthSource;
-
+	var reverb = audioCtx.createConvolver();
 	
 	// amp envelop
 	this.noiseEnvelope = this.context.createGain();
 
 	if (filter_onoff) {  
 		this.noise.connect(noiseFilter);
-		noiseFilter.connect(synthDelay);
+		noiseFilter.connect(reverb);
 
 		// convolver.connect(this.noiseEnvelope);
 		synthDelay.connect(this.noiseEnvelope);
@@ -175,31 +172,23 @@ TR808Tone2.prototype.trigger = function(time) {
 
 
 
-
-playSynth.onclick = function() {
-  synthSource = audioCtx.createBufferSource();
-  synthSource.buffer = buffers[2];
-  synthSource.loop = true;
-  synthSource.start();
-  synthSource.connect(synthDelay);
-  synthDelay.connect(destination);
-  this.setAttribute('disabled', 'disabled');
+function base64ToArrayBuffer(base64) {
+    var binaryString = window.atob(base64);
+    var len = binaryString.length;
+    var bytes = new Uint8Array(len);
+    for (var i = 0; i < len; i++)        {
+        bytes[i] = binaryString.charCodeAt(i);
+    }
+    return bytes.buffer;
 }
 
-stopSynth.onclick = function() {
-  synthSource.disconnect(synthDelay);
-  synthDelay.disconnect(destination);
-  synthSource.stop();
-  playSynth.removeAttribute('disabled');
-}
-
-
-var delay1;
-rangeSynth.oninput = function() {
-  delay1 = rangeSynth.value;
-  synthDelay.delayTime.setValueAtTime(delay1, audioCtx.currentTime);
-}
-
+var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
+audioCtx.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
+  reverb.buffer = buffer;
+},
+function(e) {
+  alert('Error when decoding audio data ' + e.err);
+})
 
 
 
