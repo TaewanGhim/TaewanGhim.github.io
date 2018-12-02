@@ -4,7 +4,9 @@ var context = new AudioContext();
 var filter_onoff = false;
 var filter_freq = 1000;
 var filter_q = 1;
-
+set_filter_onoff(status)
+set_filter_freq(freq)
+set_filter_q(q)
 
 // select a preset
 window.onload=function(){
