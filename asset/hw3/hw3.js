@@ -167,10 +167,10 @@ function base64ToArrayBuffer(base64) {
     return bytes.buffer;
 }
 
-// var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
-// this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
-//   reverb.buffer = buffer;
-// })
+var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
+this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
+  reverb.buffer = buffer;
+})
 
 function keyboardDown(key) {
 
