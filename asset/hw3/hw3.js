@@ -126,7 +126,7 @@ TR808Tone2.prototype.setup = function() {
 	
 	// reverb
 	var reverb = this.context.createConvolver();
-	reverb.buffer = base64ToArrayBuffer(64);
+	reverb.bytes.buffer = base64ToArrayBuffer(64);
 
 
 
