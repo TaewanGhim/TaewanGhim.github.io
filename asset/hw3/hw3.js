@@ -7,6 +7,7 @@ var filter_onoff = false;
 var filter_freq = 1000;
 var filter_q = 1;
 
+
 // select a preset
 window.onload=function(){
 
@@ -122,9 +123,7 @@ TR808Tone2.prototype.setup = function() {
 	noiseFilter.frequency.value = filter_freq;
 	noiseFilter.Q.value = filter_q;
 
-
-
-
+	
 	// reverb
 	var reverb = this.context.createConvolver();
 	
@@ -147,6 +146,7 @@ TR808Tone2.prototype.setup = function() {
 	this.noiseEnvelope.connect(this.context.destination);
 };
 
+
 TR808Tone2.prototype.trigger = function(time) {
 	this.setup();
 
@@ -155,7 +155,6 @@ TR808Tone2.prototype.trigger = function(time) {
 	this.noise.start(time)
 	this.noise.stop(time + this.amp_decaytime);
 };
-
 
 
 function base64ToArrayBuffer(base64) {
@@ -172,7 +171,6 @@ var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
 this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
   reverb.buffer = buffer;
 });
-
 
 function keyboardDown(key) {
 
@@ -205,7 +203,7 @@ function keyboardDown(key) {
 
 function play_kick()
 {
-	var kick = new TR808Tone1(context, 50, 'exp', 2, 0.6);
+	var kick = new TR808Tone1(context, 150, 'exp', 2, 0.6);
 	var now = context.currentTime;
 	
 	kick.trigger(now);		
@@ -213,7 +211,7 @@ function play_kick()
 
 function play_lowtom()
 {
-	var low_tom = new TR808Tone1(context, 150, 'linear', 1, 0.3);
+	var low_tom = new TR808Tone1(context, 200, 'linear', 1, 0.3);
 	var now = context.currentTime;
 	
 	low_tom.trigger(now);		
@@ -230,7 +228,7 @@ function play_midtom()
 
 function play_hightom()
 {
-	var high_tom = new TR808Tone1(context, 600, 'linear', 1, 0.3);
+	var high_tom = new TR808Tone1(context, 400, 'linear', 1, 0.3);
 	var now = context.currentTime;
 	
 	high_tom.trigger(now);		
@@ -238,7 +236,7 @@ function play_hightom()
 
 function play_snare()
 {
-	var snare = new TR808Tone2(context, 700, 0.5, 0.2);
+	var snare = new TR808Tone2(context, 500, 0.5, 0.2);
 	var now = context.currentTime;
 	
 	snare.trigger(now);		
