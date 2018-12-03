@@ -122,27 +122,8 @@ TR808Tone2.prototype.setup = function() {
 	noiseFilter.frequency.value = filter_freq;
 	noiseFilter.Q.value = filter_q;
 
-	//
-	// var distortion = this.context.createWaveShaper();
-	// distortion.curve = makeDistortionCurve(400);
-	// // console.log(distortion.curve);
-	// distortion.oversampe = '4x';
 
-	
-
-	
-	// // amp envelop
-	// this.noiseEnvelope = this.context.createGain();
-
-	// if (filter_onoff) {  
-	// 	this.noise.connect(noiseFilter);
-	// 	noiseFilter.connect(distortion);
-	// 	// distortion.connect(convolver);
-	// 	// convolver.connect(this.noiseEnvelope);
-	// 	distortion.connect(this.noiseEnvelope);
-	// 	noiseFilter.connect(this.noiseEnvelope);
-
-	var reverb = audioCtx.createConvolver();
+	var reverb = this.context.createConvolver();
 	
 	// amp envelop
 	this.noiseEnvelope = this.context.createGain();
