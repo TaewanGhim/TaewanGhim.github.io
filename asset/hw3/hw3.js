@@ -125,7 +125,7 @@ TR808Tone2.prototype.setup = function() {
 
 	
 	// reverb
-	// var reverb = this.context.createConvolver();
+	var reverb = this.context.createConvolver();
 	// reverb.bytes.buffer = base64ToArrayBuffer(10);
 
 
@@ -135,9 +135,9 @@ TR808Tone2.prototype.setup = function() {
 
 	if (filter_onoff) {  
 		this.noise.connect(noiseFilter);
-		// noiseFilter.connect(reverb);
+		noiseFilter.connect(reverb);
 
-		// reverb.connect(this.noiseEnvelope);
+		reverb.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
 
 	} else {
