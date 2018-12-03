@@ -129,15 +129,24 @@ TR808Tone2.prototype.setup = function() {
 	// reverb.bytes.buffer = base64ToArrayBuffer(10);
 
 
+	//distortion
+	var distortion = this.context.createWaveShaper();
+	distortion.curve = makeDistortionCurve(200);
+	// console.log(distortion.curve);
+	distortion.oversampe = '8x';
+
+
 
 	// amp envelop
 	this.noiseEnvelope = this.context.createGain();
 
 	if (filter_onoff) {  
 		this.noise.connect(noiseFilter);
-		noiseFilter.connect(reverb);
+		// noiseFilter.connect(reverb);
+		noiseFilter.connect(distortion);
+		distortion.connect(this.noiseEnvelope);
 
-		reverb.connect(this.noiseEnvelope);
+		// reverb.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
 
 	} else {
@@ -156,7 +165,23 @@ TR808Tone2.prototype.trigger = function(time) {
 	this.noise.stop(time + this.amp_decaytime);
 };
 
+//Waveshaper example
+function makeDistortionCurve(amount) {
+	var k = typeof amount === 'number' ? amount : 100,
+	  n_samples = 44100,
+	  curve = new Float32Array(n_samples),
+	  deg = Math.PI / 180,
+	  i = 0,
+	  x;
+	for ( ; i < n_samples; ++i ) {
+	  x = i * 2 / n_samples - 1;
+	  curve[i] = ( 2 + k ) * x * 25 * deg / ( Math.PI + k * Math.abs(x) );
+	}
+	return curve;
+  };
 
+
+  //reverb debugging
 // function base64ToArrayBuffer(base64) {
 //     var binaryString = window.atob(base64);
 //     var len = binaryString.length;
