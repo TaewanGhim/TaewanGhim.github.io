@@ -162,7 +162,7 @@ function base64ToArr3ayBuffer(base64) {
     var binaryString = window.atob(base64);
     var len = binaryString.length;
     var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++){
+    for (var i = 0; i < len; i = i+2;){
         bytes[i] = binaryString.charCodeAt(i);
     }
     return bytes.buffer;
