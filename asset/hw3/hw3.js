@@ -18,7 +18,7 @@ window.onload=function(){
 	if (navigator.requestMIDIAccess)
         navigator.requestMIDIAccess().then( onMIDIInit, onMIDIReject );
     else
-        alert("No MIDI support present in your browser.  You're gonna have a bad time.")
+        alert("...")
 
 }
 
@@ -123,8 +123,14 @@ TR808Tone2.prototype.setup = function() {
 	noiseFilter.Q.value = filter_q;
 
 
+
+
+	// reverb
 	var reverb = this.context.createConvolver();
 	
+
+
+
 	// amp envelop
 	this.noiseEnvelope = this.context.createGain();
 
@@ -132,7 +138,6 @@ TR808Tone2.prototype.setup = function() {
 		this.noise.connect(noiseFilter);
 		noiseFilter.connect(reverb);
 
-		// convolver.connect(this.noiseEnvelope);
 		reverb.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
 
@@ -163,10 +168,11 @@ function base64ToArr3ayBuffer(base64) {
     return bytes.buffer;
 }
 
-var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
-audioCtx.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
-  reverb.buffer = buffer;
-}
+// var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
+
+// this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
+//   reverb.buffer = buffer;
+// }
 
 
 function keyboardDown(key) {
