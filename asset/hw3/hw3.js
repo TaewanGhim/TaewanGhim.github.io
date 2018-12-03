@@ -152,7 +152,7 @@ TR808Tone2.prototype.setup = function() {
 		noiseFilter.connect(reverb);
 
 		// convolver.connect(this.noiseEnvelope);
-		synthDelay.connect(this.noiseEnvelope);
+		reverb.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
 
 	} else {
@@ -172,11 +172,11 @@ TR808Tone2.prototype.trigger = function(time) {
 
 
 
-function base64ToArrayBuffer(base64) {
+function base64ToArr3ayBuffer(base64) {
     var binaryString = window.atob(base64);
     var len = binaryString.length;
     var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++)        {
+    for (var i = 0; i < len; i++){
         bytes[i] = binaryString.charCodeAt(i);
     }
     return bytes.buffer;
@@ -185,11 +185,7 @@ function base64ToArrayBuffer(base64) {
 var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
 audioCtx.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
   reverb.buffer = buffer;
-},
-function(e) {
-  alert('Error when decoding audio data ' + e.err);
-})
-
+}
 
 
 function keyboardDown(key) {
