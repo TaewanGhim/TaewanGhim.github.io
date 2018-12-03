@@ -126,7 +126,7 @@ TR808Tone2.prototype.setup = function() {
 	
 	// reverb
 	var reverb = this.context.createConvolver();
-	// reverb.bytes.buffer = base64ToArrayBuffer(base64);
+	reverb.bytes.buffer = base64ToArrayBuffer(10);
 
 
 
@@ -167,10 +167,10 @@ function base64ToArrayBuffer(base64) {
     return bytes.buffer;
 }
 
-// var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
-// this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
-//   reverb.buffer = buffer;
-// })
+var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
+this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
+  reverb.buffer = buffer;
+})
 
 function keyboardDown(key) {
 
