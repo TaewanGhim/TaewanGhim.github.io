@@ -125,8 +125,8 @@ TR808Tone2.prototype.setup = function() {
 
 	
 	// reverb
-	var reverb = this.context.createConvolver();
-	reverb.bytes.buffer = base64ToArrayBuffer(10);
+	// var reverb = this.context.createConvolver();
+	// reverb.bytes.buffer = base64ToArrayBuffer(10);
 
 
 
@@ -135,9 +135,9 @@ TR808Tone2.prototype.setup = function() {
 
 	if (filter_onoff) {  
 		this.noise.connect(noiseFilter);
-		noiseFilter.connect(reverb);
+		// noiseFilter.connect(reverb);
 
-		reverb.connect(this.noiseEnvelope);
+		// reverb.connect(this.noiseEnvelope);
 		noiseFilter.connect(this.noiseEnvelope);
 
 	} else {
@@ -157,15 +157,15 @@ TR808Tone2.prototype.trigger = function(time) {
 };
 
 
-function base64ToArrayBuffer(base64) {
-    var binaryString = window.atob(base64);
-    var len = binaryString.length;
-    var bytes = new Uint8Array(len);
-    for (var i = 0; i < len; i++)        {
-        bytes[i] = binaryString.charCodeAt(i);
-    }
-    return bytes.buffer;
-}
+// function base64ToArrayBuffer(base64) {
+//     var binaryString = window.atob(base64);
+//     var len = binaryString.length;
+//     var bytes = new Uint8Array(len);
+//     for (var i = 0; i < len; i++)        {
+//         bytes[i] = binaryString.charCodeAt(i);
+//     }
+//     return bytes.buffer;
+// }
 
 // var reverbSoundArrayBuffer = base64ToArrayBuffer(impulseResponse);
 // this.context.decodeAudioData(reverbSoundArrayBuffer, function(buffer) {
