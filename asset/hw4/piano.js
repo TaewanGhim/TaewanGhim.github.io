@@ -86,8 +86,21 @@ class Player {
  * Floaty notes
  ************************/
 class FloatyNotes {
- 
+  constructor() {
+    this.notes = [];  // the notes floating on the screen.
+    
+    this.canvas = document.getElementById('canvas')
+    this.context = this.canvas.getContext('2d');
+    this.context.lineWidth = 4;
+    this.context.lineCap = 'round';
+    
+    this.contextHeight = 0;
+  }
   
+  resize(whiteNoteHeight) {
+    this.canvas.width = window.innerWidth;
+    this.canvas.height = this.contextHeight = window.innerHeight - whiteNoteHeight - 20;
+  }
   
   addNote(button, x, width) {
     const noteToPaint = {
