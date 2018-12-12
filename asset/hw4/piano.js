@@ -88,10 +88,6 @@ class Player {
 class FloatyNotes {
  
   
-  resize(whiteNoteHeight) {
-    this.canvas.width = window.innerWidth;
-    this.canvas.height = this.contextHeight = window.innerHeight - whiteNoteHeight - 20;
-  }
   
   addNote(button, x, width) {
     const noteToPaint = {
