@@ -33,10 +33,7 @@ var MODES = [
   maxLineLength: 20000,
   growthFactor: 5,
   lSystem: {
-    axiom: [
-    {
-      symbol: "X",
-      terminalAge: 0 }],
+    axiom: [{ symbol: "X", terminalAge: 0 }],
 
 
     productions: {
@@ -267,7 +264,7 @@ var MODES = [
 
 
 
-  audioChain: new Tone.Tremolo({ frequency: 10, depth: 0.8, type: "sine" }).
+  audioChain: new Tone.Reverb({ frequency: 10, depth: 0.8, type: "sine" }).
   connect(compressor).
   start() },
 
