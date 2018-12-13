@@ -27,7 +27,7 @@ var INTERVALS = [1, 2, 3, 6];
 
 var MODES = [
 {
-  color: { hue: 0, saturation: 50 },
+  color: { hue: 0, saturation: 50, lightness: 100},
   filterQ: 2000,
   gainRange: [0.5, 10],
   lengthRange: [10, 50],
