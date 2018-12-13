@@ -196,7 +196,7 @@ var MODES = [
   color: { hue: 330, saturation: 100, lightness: 70 },
   filterQ: 500,
   gainRange: [0.1, 10],
-  lengthRange: [1, 50],
+  lengthRange: [15, 60],
   angleRange: [11, 33],
   maxLineLength: 10000,
   growthFactor: 20,
@@ -509,7 +509,7 @@ var nextSpawn = void 0,distanceFromLastSpawn = void 0,path = void 0;
 
 var buttons = MODES.map(function (mode, idx) {
   var button = document.createElement("button");
-  button.textContent = idx + 1;
+  button.textContent = idx + 2;
   button.style.backgroundColor =
   idx === 0 ?
   getColorStr(mode.color, SCALE.length / 2, 1) :
@@ -623,7 +623,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 30);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 50);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
