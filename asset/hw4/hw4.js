@@ -25,13 +25,13 @@ var INTERVALS = [1, 2, 3, 6];
 
 var MODES = [
 {
-  color: { hue: 200, saturation: 90 },
+  color: { hue: random(0,100), saturation: random(0,100) },
   filterQ: 2000,
-  gainRange: [0.1, 5],
-  lengthRange: [10, 25],
-  angleRange: [20, 25],
+  gainRange: [0.5, 10],
+  lengthRange: [10, 30],
+  angleRange: [20, 40],
   maxLineLength: 10000,
-  growthFactor: 5,
+  growthFactor: 20,
   lSystem: {
     axiom: [
     {
@@ -193,13 +193,13 @@ var MODES = [
   audioChain: compressor },
 
 {
-  color: { hue: 280, saturation: 100 },
+  color: { hue:random(100, 200), saturation:random(50, 100) },
   filterQ: 500,
-  gainRange: [0.1, 4],
-  lengthRange: [1, 25],
+  gainRange: [0.5, 10],
+  lengthRange: [1, 50],
   angleRange: [11, 33],
-  maxLineLength: 10000,
-  growthFactor: 4,
+  maxLineLength: 20000,
+  growthFactor: 8,
   lSystem: {
     axiom: [
     {
@@ -272,13 +272,13 @@ var MODES = [
   start() },
 
 {
-  color: { hue: 350, saturation: 54 },
+  color: { hue:random(200,300), saturation: random(0,100)},
   filterQ: 1000,
-  gainRange: [0.1, 1],
-  lengthRange: [10, 15],
-  angleRange: [10, 35],
+  gainRange: [0.5, 5],
+  lengthRange: [10, 30],
+  angleRange: [50, 80],
   maxLineLength: 10000,
-  growthFactor: 4,
+  growthFactor: 6,
   lSystem: {
     axiom: [
     {
@@ -467,7 +467,7 @@ function turtleInterpret(str, translateTo, rotateBy, onF) {
 
 function getColorStr(_ref13, noteIndex) {var hue = _ref13.hue,saturation = _ref13.saturation;var alpha = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   var relNoteIndex = noteIndex / SCALE.length;
-  var lightness = scale(relNoteIndex, [30, 70]);
+  var lightness = scale(relNoteIndex, [20, 100]);
   return "hsla(" + hue + ", " + saturation + "%, " + lightness + "%, " + alpha + ")";
 }
 
@@ -576,7 +576,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 1000) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 5000) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
@@ -622,7 +622,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 10);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 30);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
