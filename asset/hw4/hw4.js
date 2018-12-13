@@ -649,7 +649,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 10);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 50);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
