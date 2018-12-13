@@ -32,7 +32,7 @@ var MODES = [
   gainRange: [0.5, 10],
   lengthRange: [10, 50],
   angleRange: [20, 80],
-  maxLineLength: 20000,
+  maxLineLength: 10000,
   growthFactor: 10,
   lSystem: {
     axiom: [{ symbol: "X", terminalAge: 0 }],
@@ -194,8 +194,8 @@ var MODES = [
 {
   color: { hue: 280, saturation: 100 },
   filterQ: 500,
-  gainRange: [0.1, 4],
-  lengthRange: [1, 25],
+  gainRange: [0.5, 10],
+  lengthRange: [1, 50],
   angleRange: [11, 33],
   maxLineLength: 10000,
   growthFactor: 4,
@@ -271,13 +271,13 @@ var MODES = [
   start() },
 
 {
-  color: { hue: 350, saturation: 54 },
+  color: { hue: 350, saturation: 0, lightness: 50 },
   filterQ: 1000,
-  gainRange: [0.1, 1],
-  lengthRange: [10, 15],
-  angleRange: [10, 35],
+  gainRange: [0.5, 10],
+  lengthRange: [10, 30],
+  angleRange: [50, 80],
   maxLineLength: 10000,
-  growthFactor: 4,
+  growthFactor: 6,
   lSystem: {
     axiom: [
     {
