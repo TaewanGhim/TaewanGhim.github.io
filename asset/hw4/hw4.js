@@ -211,7 +211,7 @@ var MODES = [
   lengthRange: [1, 50],
   angleRange: [11, 33],
   maxLineLength: 20000,
-  growthFactor: 4,
+  growthFactor: 8,
   lSystem: {
     axiom: [
     {
@@ -286,7 +286,7 @@ var MODES = [
 {
   color: { hue: 350, saturation: 0, lightness: 50 },
   filterQ: 1000,
-  gainRange: [0.5, 7],
+  gainRange: [0.5, 5],
   lengthRange: [10, 30],
   angleRange: [50, 80],
   maxLineLength: 10000,
@@ -304,7 +304,7 @@ var MODES = [
         terminalAge: [MAX_GROWTH_TIME / 4, MAX_GROWTH_TIME / 3.5],
         successors: [
         {
-          p: 1.5,
+          p: 0.5,
           items: [
           {
             symbol: "F",
