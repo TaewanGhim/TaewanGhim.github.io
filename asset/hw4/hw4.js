@@ -25,12 +25,12 @@ var INTERVALS = [1, 2, 3, 6];
 
 var MODES = [
 {
-  color: { hue: 200, saturation: 90 },
+  color: { hue: 160, saturation: 100 },
   filterQ: 2000,
-  gainRange: [0.1, 5],
-  lengthRange: [10, 25],
+  gainRange: [0.5, 10],
+  lengthRange: [10, 55],
   angleRange: [20, 25],
-  maxLineLength: 10000,
+  maxLineLength: 20000,
   growthFactor: 30,
   lSystem: {
     axiom: [
@@ -193,10 +193,10 @@ var MODES = [
   audioChain: compressor },
 
 {
-  color: { hue: 280, saturation: 100 },
+  color: { hue: 45, saturation: 100 },
   filterQ: 500,
-  gainRange: [0.1, 4],
-  lengthRange: [1, 25],
+  gainRange: [0.1, 10],
+  lengthRange: [1, 45],
   angleRange: [11, 33],
   maxLineLength: 10000,
   growthFactor: 20,
@@ -272,11 +272,11 @@ var MODES = [
   start() },
 
 {
-  color: { hue: 350, saturation: 54 },
+  color: { hue: 200, saturation: 100, lightness: 70 },
   filterQ: 1000,
-  gainRange: [0.1, 1],
-  lengthRange: [10, 15],
-  angleRange: [10, 35],
+  gainRange: [0.1, 5],
+  lengthRange: [30, 65],
+  angleRange: [10, 25],
   maxLineLength: 10000,
   growthFactor: 10,
   lSystem: {
