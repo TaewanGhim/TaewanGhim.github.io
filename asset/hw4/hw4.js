@@ -31,7 +31,7 @@ var MODES = [
   lengthRange: [10, 25],
   angleRange: [20, 25],
   maxLineLength: 10000,
-  growthFactor: 5,
+  growthFactor: 30,
   lSystem: {
     axiom: [
     {
@@ -199,7 +199,7 @@ var MODES = [
   lengthRange: [1, 25],
   angleRange: [11, 33],
   maxLineLength: 10000,
-  growthFactor: 4,
+  growthFactor: 20,
   lSystem: {
     axiom: [
     {
@@ -278,7 +278,7 @@ var MODES = [
   lengthRange: [10, 15],
   angleRange: [10, 35],
   maxLineLength: 10000,
-  growthFactor: 4,
+  growthFactor: 10,
   lSystem: {
     axiom: [
     {
