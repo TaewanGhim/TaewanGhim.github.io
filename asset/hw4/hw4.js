@@ -44,7 +44,7 @@ var MODES = [
   filterQ: 2000,
   gainRange: [0.5, 10],
   lengthRange: [10, 50],
-  angleRange: [20, 80],
+  angleRange: [20, 40],
   maxLineLength: 10000,
   growthFactor: 10,
   lSystem: {
