@@ -272,7 +272,7 @@ var MODES = [
   start() },
 
 {
-  color: { hue: 185, saturation: 70},
+  color: { hue: 205, saturation: 70},
   filterQ: 1000,
   gainRange: [0.1, 5],
   lengthRange: [10, 30],
