@@ -509,7 +509,7 @@ var nextSpawn = void 0,distanceFromLastSpawn = void 0,path = void 0;
 
 var buttons = MODES.map(function (mode, idx) {
   var button = document.createElement("button");
-  button.textContent = idx + 2;
+  button.textContent = idx + 1;
   button.style.backgroundColor =
   idx === 0 ?
   getColorStr(mode.color, SCALE.length / 2, 1) :
