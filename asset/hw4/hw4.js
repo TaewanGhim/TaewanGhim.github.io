@@ -199,7 +199,7 @@ var MODES = [
   lengthRange: [35, 60],
   angleRange: [11, 33],
   maxLineLength: 20000,
-  growthFactor: 20,
+  growthFactor: 10,
   lSystem: {
     axiom: [
     {
