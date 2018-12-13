@@ -210,7 +210,7 @@ var MODES = [
   gainRange: [0.5, 10],
   lengthRange: [1, 50],
   angleRange: [11, 33],
-  maxLineLength: 10000,
+  maxLineLength: 20000,
   growthFactor: 4,
   lSystem: {
     axiom: [
@@ -286,7 +286,7 @@ var MODES = [
 {
   color: { hue: 350, saturation: 0, lightness: 50 },
   filterQ: 1000,
-  gainRange: [0.5, 10],
+  gainRange: [0.5, 7],
   lengthRange: [10, 30],
   angleRange: [50, 80],
   maxLineLength: 10000,
@@ -580,7 +580,7 @@ drawTool.onMouseDrag = function (evt) {
   if (distanceFromLastSpawn >= nextSpawn) {
     var growthCoefficient = Math.min(
     1,
-    Math.max(0.2, path.mode.growthFactor / evt.delta.length));
+    Math.max(0.8, path.mode.growthFactor / evt.delta.length));
 
     path.offshoots.push({
       str: path.mode.lSystem.axiom.map(function (a) {return Object.assign({ birthTime: 0 }, a);}),
@@ -603,7 +603,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 1000) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 3000) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
@@ -662,10 +662,18 @@ paper.view.onFrame = function (evt) {
       var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME / 2;
       offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 5);
 
-      ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);var _iteratorNormalCompletion4 = true;var _didIteratorError4 = false;var _iteratorError4 = undefined;try {
+      ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+      try {
         for (var _iterator4 = Object.keys(offshoot.currentLines)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {var width = _step4.value;
           ctx.beginPath();
-          ctx.lineWidth = width / 5;var _iteratorNormalCompletion5 = true;var _didIteratorError5 = false;var _iteratorError5 = undefined;try {
+          ctx.lineWidth = width / 2;
+          var _iteratorNormalCompletion5 = true;
+          var _didIteratorError5 = false;
+          var _iteratorError5 = undefined;
+          try {
             for (var _iterator5 = offshoot.currentLines[width][Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {var _ref15 = _step5.value;var from = _ref15.from,to = _ref15.to;
               ctx.moveTo(from.x, from.y);
               ctx.lineTo(to.x, to.y);
@@ -680,7 +688,11 @@ paper.view.onFrame = function (evt) {
 
 setInterval(function () {
   var totalX = 0,
-  pointCount = 0;var _iteratorNormalCompletion6 = true;var _didIteratorError6 = false;var _iteratorError6 = undefined;try {var _loop2 = function _loop2() {var
+  pointCount = 0;var _iteratorNormalCompletion6 = true;
+  var _didIteratorError6 = false;
+  var _iteratorError6 = undefined;
+  try {var _loop2 = function _loop2() {
+    var
       path = _step6.value;
       if (!path.player) {
         var gain = new Tone.Gain(path.mode.gainRange[0]);
@@ -710,7 +722,10 @@ setInterval(function () {
 
       var totalLength = 0,
       totalX = 0,
-      ptCount = 0;var _iteratorNormalCompletion7 = true;var _didIteratorError7 = false;var _iteratorError7 = undefined;try {
+      ptCount = 0;
+      var _iteratorNormalCompletion7 = true;
+      var _didIteratorError7 = false;
+      var _iteratorError7 = undefined;try {
         for (var _iterator7 = path.offshoots[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {var _offshoot = _step7.value;var _iteratorNormalCompletion8 = true;var _didIteratorError8 = false;var _iteratorError8 = undefined;try {
             for (var _iterator8 = Object.keys(_offshoot.currentLines || {})[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {var key = _step8.value;var _iteratorNormalCompletion9 = true;var _didIteratorError9 = false;var _iteratorError9 = undefined;try {
                 for (var _iterator9 = _offshoot.currentLines[key][Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {var _ref17 = _step9.value;var from = _ref17.from,to = _ref17.to;
