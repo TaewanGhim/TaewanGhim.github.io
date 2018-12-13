@@ -1,5 +1,5 @@
 var _slicedToArray = function () {function sliceIterator(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"]) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}return function (arr, i) {if (Array.isArray(arr)) {return arr;} else if (Symbol.iterator in Object(arr)) {return sliceIterator(arr, i);} else {throw new TypeError("Invalid attempt to destructure non-iterable instance");}};}();var SPAWN_RATE = [10, 30];
-var MAX_GROWTH_TIME = 30;
+var MAX_GROWTH_TIME = 10;
 var PAN_RANGE = [-0.8, 0.8];
 
 var compressor = new Tone.Compressor().toMaster();
@@ -467,7 +467,7 @@ function turtleInterpret(str, translateTo, rotateBy, onF) {
 
 function getColorStr(_ref13, noteIndex) {var hue = _ref13.hue,saturation = _ref13.saturation;var alpha = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   var relNoteIndex = noteIndex / SCALE.length;
-  var lightness = scale(relNoteIndex, [20, 100]);
+  var lightness = scale(relNoteIndex, [30, 70]);
   return "hsla(" + hue + ", " + saturation + "%, " + lightness + "%, " + alpha + ")";
 }
 
@@ -576,7 +576,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 5000) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 1000) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
@@ -622,7 +622,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 30);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 10);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
