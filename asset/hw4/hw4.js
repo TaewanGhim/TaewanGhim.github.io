@@ -585,13 +585,13 @@ paper.view.onFrame = function (evt) {
     }
 
     if (_path.length > 0) {
-      ctx.lineWidth = 10;
+      ctx.lineWidth = 20;
       for (var _i = _path.length - 1; _i >= 0; _i--) {var _path$_i =
         _path[_i],lastPoint = _path$_i.lastPoint,point = _path$_i.point,addedAt = _path$_i.addedAt;
         var alpha = 1 - (Date.now() - addedAt) / 1000;
         if (alpha > 0) {
           ctx.strokeStyle = getColorStr(mode.color, noteIndex, alpha);
-          ctx.strokeWeight = 5;
+          ctx.strokeWeight = 10;
           ctx.beginPath();
           ctx.moveTo(lastPoint.x, lastPoint.y);
           ctx.lineTo(point.x, point.y);
