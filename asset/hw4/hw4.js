@@ -27,10 +27,10 @@ var INTERVALS = [1, 2, 3, 6];
 
 var MODES = [
 {
-  color: { hue: 100, saturation: 50 },
+  color: { hue: 0, saturation: 50 },
   filterQ: 2000,
   gainRange: [0.5, 10],
-  lengthRange: [10, 80],
+  lengthRange: [10, 50],
   angleRange: [20, 80],
   maxLineLength: 20000,
   growthFactor: 10,
