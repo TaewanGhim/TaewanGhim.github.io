@@ -1,5 +1,5 @@
 var _slicedToArray = function () {function sliceIterator(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"]) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}return function (arr, i) {if (Array.isArray(arr)) {return arr;} else if (Symbol.iterator in Object(arr)) {return sliceIterator(arr, i);} else {throw new TypeError("Invalid attempt to destructure non-iterable instance");}};}();var SPAWN_RATE = [10, 30];
-var MAX_GROWTH_TIME = 5;
+var MAX_GROWTH_TIME = 50;
 var PAN_RANGE = [-0.8, 0.8];
 
 var compressor = new Tone.Compressor().toMaster();
@@ -25,7 +25,7 @@ var INTERVALS = [1, 2, 3, 6];
 
 var MODES = [
 {
-  color: { hue: 160, saturation: 100 },
+  color: { hue: 160, saturation: 70 },
   filterQ: 2000,
   gainRange: [0.5, 10],
    lengthRange: [10, 30],
@@ -272,7 +272,7 @@ var MODES = [
   start() },
 
 {
-  color: { hue: 185, saturation: 100, lightness: 70 },
+  color: { hue: 185, saturation: 70},
   filterQ: 1000,
   gainRange: [0.1, 5],
   lengthRange: [10, 30],
@@ -591,6 +591,7 @@ paper.view.onFrame = function (evt) {
         var alpha = 1 - (Date.now() - addedAt) / 1000;
         if (alpha > 0) {
           ctx.strokeStyle = getColorStr(mode.color, noteIndex, alpha);
+          ctx.strokeWeight = 5;
           ctx.beginPath();
           ctx.moveTo(lastPoint.x, lastPoint.y);
           ctx.lineTo(point.x, point.y);
