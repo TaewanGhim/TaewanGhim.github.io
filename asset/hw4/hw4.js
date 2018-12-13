@@ -40,7 +40,7 @@ var INTERVALS = [1, 2, 3, 6];
 
 var MODES = [
 {
-  color: { hue: random(0,120), saturation: random(0,50)},
+  color: { hue: random(0,100), saturation: random(0,100)},
   filterQ: 2000,
   gainRange: [0.5, 10],
   lengthRange: [10, 30],
@@ -205,7 +205,7 @@ var MODES = [
   audioChain: compressor },
 
 {
-  color: { hue:random(120, 240), saturation:random(50, 100) },
+  color: { hue:random(100, 200), saturation:random(50, 100) },
   filterQ: 500,
   gainRange: [0.5, 10],
   lengthRange: [1, 50],
@@ -284,7 +284,7 @@ var MODES = [
   start() },
 
 {
-  color: { hue:random(280,360), saturation: random(0,100)},
+  color: { hue:random(200,300), saturation: random(0,100)},
   filterQ: 1000,
   gainRange: [0.5, 5],
   lengthRange: [10, 30],
