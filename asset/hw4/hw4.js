@@ -585,7 +585,7 @@ paper.view.onFrame = function (evt) {
     }
 
     if (_path.length > 0) {
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 10;
       for (var _i = _path.length - 1; _i >= 0; _i--) {var _path$_i =
         _path[_i],lastPoint = _path$_i.lastPoint,point = _path$_i.point,addedAt = _path$_i.addedAt;
         var alpha = 1 - (Date.now() - addedAt) / 1000;
