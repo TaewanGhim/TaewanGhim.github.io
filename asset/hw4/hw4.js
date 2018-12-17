@@ -16,7 +16,7 @@ var _slicedToArray = function () {
 }};
 }();
 var SPAWN_RATE = [10, 30];
-var MAX_GROWTH_TIME = 50;
+var MAX_GROWTH_TIME = 30;
 var PAN_RANGE = [-0.8, 0.8];
 
 var compressor = new Tone.Compressor().toMaster();
@@ -38,17 +38,17 @@ var SCALE = [
 "B5",
 "Db6"];
 
-var INTERVALS = [1, 2, 3, 6];
+var INTERVALS = [10, 10, 10, 10];
 
 var MODES = [
 {
   color: { hue: 160, saturation: 70 },
   filterQ: 2000,
-  gainRange: [0.5, 10],
+  gainRange: [0.1, 10],
   lengthRange: [10, 50],
-  angleRange: [20, 40],
-  maxLineLength: 30000,
-  growthFactor: 30,
+  angleRange: [20, 25],
+  maxLineLength: 10000,
+  growthFactor: 10,
   lSystem: {
     axiom: [
     {
@@ -58,7 +58,7 @@ var MODES = [
 
     productions: {
       X: {
-        terminalAge: [MAX_GROWTH_TIME / 3, MAX_GROWTH_TIME / 2],
+        terminalAge: [MAX_GROWTH_TIME / 5, MAX_GROWTH_TIME / 2],
         successors: [
         {
           p: 0.33,
@@ -212,11 +212,11 @@ var MODES = [
 {
   color: { hue: 330, saturation: 100, lightness: 70 },
   filterQ: 500,
-  gainRange: [0.5, 10],
-  lengthRange: [35, 60],
-  angleRange: [11, 33],
-  maxLineLength: 20000,
-  growthFactor: 10,
+  gainRange: [0.1, 8],
+  lengthRange: [35, 45],
+  angleRange: [66, 33],
+  maxLineLength: 10000,
+  growthFactor: 4,
   lSystem: {
     axiom: [
     {
@@ -227,7 +227,7 @@ var MODES = [
 
     productions: {
       F: {
-        terminalAge: [MAX_GROWTH_TIME / 3, MAX_GROWTH_TIME / 2],
+        terminalAge: [MAX_GROWTH_TIME / 2, MAX_GROWTH_TIME / 4],
         successors: [
         {
           p: 1,
@@ -291,11 +291,11 @@ var MODES = [
 {
   color: { hue: 205, saturation: 70},
   filterQ: 1000,
-  gainRange: [0.1, 3],
-  lengthRange: [10, 40],
-  angleRange: [-50, 50],
-  maxLineLength: 5000,
-  growthFactor: 10,
+  gainRange: [0.1, 1],
+  lengthRange: [10, 15],
+  angleRange: [10,35],
+  maxLineLength: 8000,
+  growthFactor: 4,
   lSystem: {
     axiom: [
     {
@@ -306,7 +306,7 @@ var MODES = [
 
     productions: {
       F: {
-        terminalAge: [MAX_GROWTH_TIME / 4, MAX_GROWTH_TIME / 3.5],
+        terminalAge: [MAX_GROWTH_TIME / 2, MAX_GROWTH_TIME / 10],
         successors: [
         {
           p: 0.5,
@@ -618,7 +618,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 800) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 1000) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
@@ -665,7 +665,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 100);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 10);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
@@ -675,7 +675,7 @@ paper.view.onFrame = function (evt) {
 
       }
 
-      var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME ;
+      var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME /2;
       offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 3);
 
       ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);
