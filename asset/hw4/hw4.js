@@ -45,7 +45,7 @@ var MODES = [
   color: { hue: 160, saturation: 70 },
   filterQ: 2000,
   gainRange: [0.5, 10],
-  lengthRange: [10, 30],
+  lengthRange: [10, 50],
   angleRange: [20, 40],
   maxLineLength: 30000,
   growthFactor: 30,
@@ -291,10 +291,10 @@ var MODES = [
 {
   color: { hue: 205, saturation: 70},
   filterQ: 1000,
-  gainRange: [0.1, 5],
-  lengthRange: [30, 70],
-  angleRange: [50, 80],
-  maxLineLength: 20000,
+  gainRange: [0.1, 3],
+  lengthRange: [10, 40],
+  angleRange: [-50, 50],
+  maxLineLength: 5000,
   growthFactor: 10,
   lSystem: {
     axiom: [
