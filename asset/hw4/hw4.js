@@ -633,7 +633,7 @@ paper.view.onFrame = function (evt) {
         var alpha = 1 - (Date.now() - addedAt) / 1000;
         if (alpha > 0) {
           ctx.strokeStyle = getColorStr(mode.color, noteIndex, alpha);
-          ctx.strokeWeight = 5;
+          
           ctx.beginPath();
           ctx.moveTo(lastPoint.x, lastPoint.y);
           ctx.lineTo(point.x, point.y);
