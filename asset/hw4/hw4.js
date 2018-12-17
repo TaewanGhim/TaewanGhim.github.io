@@ -1,4 +1,21 @@
-var _slicedToArray = function () {function sliceIterator(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"]) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}return function (arr, i) {if (Array.isArray(arr)) {return arr;} else if (Symbol.iterator in Object(arr)) {return sliceIterator(arr, i);} else {throw new TypeError("Invalid attempt to destructure non-iterable instance");}};}();var SPAWN_RATE = [10, 30];
+var _slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+    try {for (
+      var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done);
+      _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;
+    }} catch (err) {_d = true;_e = err;
+    } finally {try {if (!_n && _i["return"]) _i["return"]();
+  } finally {if (_d) throw _e;}}return _arr;
+}return function (arr, i) {if (Array.isArray(arr)) {return arr;
+} else if (Symbol.iterator in Object(arr)) {return sliceIterator(arr, i);
+} else {throw new TypeError("Invalid attempt to destructure non-iterable instance");
+}};
+}();
+var SPAWN_RATE = [10, 30];
 var MAX_GROWTH_TIME = 50;
 var PAN_RANGE = [-0.8, 0.8];
 
@@ -393,13 +410,25 @@ function findProduction(productions, symbol) {
   if (productions.hasOwnProperty(symbol)) {
     var prod = productions[symbol];
     var rnd = Math.random();
-    var totalP = 0;var _iteratorNormalCompletion = true;var _didIteratorError = false;var _iteratorError = undefined;try {
-      for (var _iterator = prod.successors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {var _ref12 = _step.value;var p = _ref12.p,items = _ref12.items;
+    var totalP = 0;var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+    try {
+      for (
+        var _iterator = prod.successors[Symbol.iterator](), _step;
+        !(_iteratorNormalCompletion = (_step = _iterator.next()).done);
+        _iteratorNormalCompletion = true){
+        var _ref12 = _step.value;
+        var p = _ref12.p,items = _ref12.items;
         totalP += p;
         if (rnd <= totalP) {
           return { terminalAge: prod.terminalAge, items: items };
         }
-      }} catch (err) {_didIteratorError = true;_iteratorError = err;} finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();}} finally {if (_didIteratorError) {throw _iteratorError;}}}
+      }} catch (err) {_didIteratorError = true;
+        _iteratorError = err;
+      } finally {try {if (!_iteratorNormalCompletion && _iterator.return) {_iterator.return();
+      }} finally {if (_didIteratorError) {throw _iteratorError;
+      }}}
   }
   return null;
 }
@@ -412,8 +441,15 @@ function lExpand(lSystem, str, timeElapsed) {
       var prod = findProduction(lSystem.productions, chr.symbol);
       if (prod) {
         var childBirthTime = chr.birthTime + chr.terminalAge;
-        var newItems = [];var _iteratorNormalCompletion2 = true;var _didIteratorError2 = false;var _iteratorError2 = undefined;try {
-          for (var _iterator2 = prod.items[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {var item = _step2.value;
+        var newItems = [];
+        var _iteratorNormalCompletion2 = true;
+        var _didIteratorError2 = false;
+        var _iteratorError2 = undefined;
+        try {
+          for (
+            var _iterator2 = prod.items[Symbol.iterator](), _step2;
+            !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done);
+            _iteratorNormalCompletion2 = true) {var item = _step2.value;
             newItems.push({
               symbol: item.symbol,
               birthTime: childBirthTime,
@@ -421,7 +457,11 @@ function lExpand(lSystem, str, timeElapsed) {
               terminalAge: rand(prod.terminalAge),
               params: item.params && item.params(chr.params, chr.age) });
 
-          }} catch (err) {_didIteratorError2 = true;_iteratorError2 = err;} finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return) {_iterator2.return();}} finally {if (_didIteratorError2) {throw _iteratorError2;}}}
+          }} catch (err) {_didIteratorError2 = true;
+            _iteratorError2 = err;
+          } finally {try {if (!_iteratorNormalCompletion2 && _iterator2.return) {_iterator2.return();
+          }} finally {if (_didIteratorError2) {throw _iteratorError2;
+          }}}
         str.splice.apply(str, [i, 1].concat(newItems));
       }
     }
@@ -465,7 +505,9 @@ function turtleInterpret(str, translateTo, rotateBy, onF) {
     }} catch (err) {_didIteratorError3 = true;_iteratorError3 = err;} finally {try {if (!_iteratorNormalCompletion3 && _iterator3.return) {_iterator3.return();}} finally {if (_didIteratorError3) {throw _iteratorError3;}}}
 }
 
-function getColorStr(_ref13, noteIndex) {var hue = _ref13.hue,saturation = _ref13.saturation;var alpha = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+function getColorStr(_ref13, noteIndex) {
+  var hue = _ref13.hue,saturation = _ref13.saturation;
+  var alpha = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   var relNoteIndex = noteIndex / SCALE.length;
   var lightness = scale(relNoteIndex, [30, 70]);
   return "hsla(" + hue + ", " + saturation + "%, " + lightness + "%, " + alpha + ")";
@@ -684,10 +726,35 @@ setInterval(function () {
 
       var totalLength = 0,
       totalX = 0,
-      ptCount = 0;var _iteratorNormalCompletion7 = true;var _didIteratorError7 = false;var _iteratorError7 = undefined;try {
-        for (var _iterator7 = path.offshoots[Symbol.iterator](), _step7; !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done); _iteratorNormalCompletion7 = true) {var _offshoot = _step7.value;var _iteratorNormalCompletion8 = true;var _didIteratorError8 = false;var _iteratorError8 = undefined;try {
-            for (var _iterator8 = Object.keys(_offshoot.currentLines || {})[Symbol.iterator](), _step8; !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done); _iteratorNormalCompletion8 = true) {var key = _step8.value;var _iteratorNormalCompletion9 = true;var _didIteratorError9 = false;var _iteratorError9 = undefined;try {
-                for (var _iterator9 = _offshoot.currentLines[key][Symbol.iterator](), _step9; !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done); _iteratorNormalCompletion9 = true) {var _ref17 = _step9.value;var from = _ref17.from,to = _ref17.to;
+      ptCount = 0;
+      var _iteratorNormalCompletion7 = true;
+      var _didIteratorError7 = false;
+      var _iteratorError7 = undefined;
+      try {
+        for (
+          var _iterator7 = path.offshoots[Symbol.iterator](), _step7;
+          !(_iteratorNormalCompletion7 = (_step7 = _iterator7.next()).done);
+          _iteratorNormalCompletion7 = true){
+          var _offshoot = _step7.value;
+          var _iteratorNormalCompletion8 = true;
+          var _didIteratorError8 = false;
+          var _iteratorError8 = undefined;
+          try {
+            for (
+              var _iterator8 = Object.keys(_offshoot.currentLines || {})[Symbol.iterator](), _step8;
+              !(_iteratorNormalCompletion8 = (_step8 = _iterator8.next()).done);
+              _iteratorNormalCompletion8 = true){
+              var key = _step8.value;
+            var _iteratorNormalCompletion9 = true;
+            var _didIteratorError9 = false;
+            var _iteratorError9 = undefined;
+            try {
+                for (
+                  var _iterator9 = _offshoot.currentLines[key][Symbol.iterator](), _step9;
+                  !(_iteratorNormalCompletion9 = (_step9 = _iterator9.next()).done);
+                  _iteratorNormalCompletion9 = true){
+                  var _ref17 = _step9.value;
+                var from = _ref17.from,to = _ref17.to;
                   totalLength += to.getDistance(from) * _offshoot.alpha;
 
                   totalX += to.x;
