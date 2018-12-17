@@ -216,7 +216,7 @@ var MODES = [
   lengthRange: [35, 45],
   angleRange: [66, 33],
   maxLineLength: 10000,
-  growthFactor: 4,
+  growthFactor: 8,
   lSystem: {
     axiom: [
     {
@@ -291,7 +291,7 @@ var MODES = [
 {
   color: { hue: 205, saturation: 70},
   filterQ: 1000,
-  gainRange: [0.1, 0.6],
+  gainRange: [0.1, 0.75],
   lengthRange: [10, 15],
   angleRange: [10,35],
   maxLineLength: 8000,
@@ -633,7 +633,7 @@ paper.view.onFrame = function (evt) {
         var alpha = 1 - (Date.now() - addedAt) / 1000;
         if (alpha > 0) {
           ctx.strokeStyle = getColorStr(mode.color, noteIndex, alpha);
-          
+          ctx.strokeWeight = 5;
           ctx.beginPath();
           ctx.moveTo(lastPoint.x, lastPoint.y);
           ctx.lineTo(point.x, point.y);
@@ -665,7 +665,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 10);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 100);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
