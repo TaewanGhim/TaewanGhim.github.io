@@ -28,7 +28,7 @@ var MODES = [
   color: { hue: 160, saturation: 70 },
   filterQ: 2000,
   gainRange: [0.5, 10],
-   lengthRange: [10, 30],
+  lengthRange: [10, 30],
   angleRange: [20, 40],
   maxLineLength: 30000,
   growthFactor: 30,
