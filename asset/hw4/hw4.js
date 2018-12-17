@@ -210,7 +210,7 @@ var MODES = [
   audioChain: compressor },
 
 {
-  color: { hue: 330, saturation: 75, lightness: 70 },
+  color: { hue: 330, saturation: 100, lightness: 70 },
   filterQ: 500,
   gainRange: [0.5, 10],
   lengthRange: [35, 60],
@@ -618,7 +618,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 1000) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 500) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
