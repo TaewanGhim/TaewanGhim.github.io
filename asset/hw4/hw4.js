@@ -618,7 +618,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 50) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 800) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
@@ -627,7 +627,7 @@ paper.view.onFrame = function (evt) {
     }
 
     if (_path.length > 0) {
-      ctx.lineWidth = 20;
+      ctx.lineWidth = 10;
       for (var _i = _path.length - 1; _i >= 0; _i--) {var _path$_i =
         _path[_i],lastPoint = _path$_i.lastPoint,point = _path$_i.point,addedAt = _path$_i.addedAt;
         var alpha = 1 - (Date.now() - addedAt) / 1000;
