@@ -618,7 +618,7 @@ paper.view.onFrame = function (evt) {
   for (var i = paths.length - 1; i >= 0; i--) {var _paths$i =
     paths[i],_path = _paths$i.path,mode = _paths$i.mode,noteIndex = _paths$i.noteIndex,lastActivityAt = _paths$i.lastActivityAt,offshoots = _paths$i.offshoots,player = _paths$i.player;
 
-    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 500) {
+    if (lastActivityAt < Date.now() - MAX_GROWTH_TIME * 50) {
       paths.splice(i, 1);
       player.filters.forEach(function (f) {return f.disconnect();});
       player.panner.disconnect();
@@ -633,7 +633,7 @@ paper.view.onFrame = function (evt) {
         var alpha = 1 - (Date.now() - addedAt) / 1000;
         if (alpha > 0) {
           ctx.strokeStyle = getColorStr(mode.color, noteIndex, alpha);
-          ctx.strokeWeight = 10;
+          ctx.strokeWeight = 5;
           ctx.beginPath();
           ctx.moveTo(lastPoint.x, lastPoint.y);
           ctx.lineTo(point.x, point.y);
@@ -678,11 +678,28 @@ paper.view.onFrame = function (evt) {
       var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME ;
       offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 3);
 
-      ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);var _iteratorNormalCompletion4 = true;var _didIteratorError4 = false;var _iteratorError4 = undefined;try {
-        for (var _iterator4 = Object.keys(offshoot.currentLines)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {var width = _step4.value;
+      ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);
+      var _iteratorNormalCompletion4 = true;
+      var _didIteratorError4 = false;
+      var _iteratorError4 = undefined;
+      try {
+        for (
+          var _iterator4 = Object.keys(offshoot.currentLines)[Symbol.iterator](), _step4;
+          !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done);
+          _iteratorNormalCompletion4 = true) {
+          var width = _step4.value;
           ctx.beginPath();
-          ctx.lineWidth = width / 5;var _iteratorNormalCompletion5 = true;var _didIteratorError5 = false;var _iteratorError5 = undefined;try {
-            for (var _iterator5 = offshoot.currentLines[width][Symbol.iterator](), _step5; !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done); _iteratorNormalCompletion5 = true) {var _ref15 = _step5.value;var from = _ref15.from,to = _ref15.to;
+          ctx.lineWidth = width / 5;
+          var _iteratorNormalCompletion5 = true;
+          var _didIteratorError5 = false;
+          var _iteratorError5 = undefined;
+          try {
+            for (
+              var _iterator5 = offshoot.currentLines[width][Symbol.iterator](), _step5;
+              !(_iteratorNormalCompletion5 = (_step5 = _iterator5.next()).done);
+              _iteratorNormalCompletion5 = true) {
+              var _ref15 = _step5.value;
+              var from = _ref15.from,to = _ref15.to;
               ctx.moveTo(from.x, from.y);
               ctx.lineTo(to.x, to.y);
             }} catch (err) {_didIteratorError5 = true;_iteratorError5 = err;} finally {try {if (!_iteratorNormalCompletion5 && _iterator5.return) {_iterator5.return();}} finally {if (_didIteratorError5) {throw _iteratorError5;}}}
