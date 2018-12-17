@@ -12,6 +12,62 @@ body {
   font-family: sans-serif;
 }
 
+h1 {
+  text-transform: uppercase;
+  font-size: 40px;
+}
+
+.splash a:link, a:visited {
+  color:  #2F4F4F;
+}
+.splash-main b {
+  background: #2F4F4F;
+  color: black;
+  padding: 0 4px;
+}
+
+.splash {
+  font-size: 16px;
+  padding: 20px;
+  line-height: 1.5;
+  width: 100%;
+  max-width: 700px;
+  overflow: auto;
+}
+
+button.splash-button {
+  cursor: pointer;
+  margin: 40px auto;
+  padding: 14px;
+  font-family: inherit;
+  font-size: 22px;
+  display: block;
+  border: 2px solid #2F4F4F;
+  background-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #2F4F4F;
+  text-align: center;
+  transition: background-color 0.2s linear;
+  width: 200px;
+}
+
+button.splash-button:hover {
+  background-color: #2F4F4F;
+  color: black;
+}
+
+button.splash-button.small {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.splash-button.loading span {
+  animation: pulsing-fade 1.2s ease-in-out infinite;
+}
+
+
+
 .modes {
   position: fixed;
   top: 0;
