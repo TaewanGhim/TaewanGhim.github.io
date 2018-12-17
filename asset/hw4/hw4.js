@@ -210,7 +210,7 @@ var MODES = [
   audioChain: compressor },
 
 {
-  color: { hue: 330, saturation: 100, lightness: 70 },
+  color: { hue: 330, saturation: 75, lightness: 70 },
   filterQ: 500,
   gainRange: [0.5, 10],
   lengthRange: [35, 60],
