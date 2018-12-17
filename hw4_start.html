@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link  href='assets/project4/hw4.css' rel='stylesheet'>
+
+    </head>
+    <body>
+        <h1>CTP431 Final Project: <br> git commit -m "make some noise"</h1>
+        <h2>Turn your Github commits into a step sequencer</h2>
+        <p>Essentially, this is a data sonification of github commit history. <br><br>
+            Each column corresponds to either
+            <li>one chord with each row being a single note in the chord </li>
+            <li>or each column is a single set of instruments with each row being different instruments.</li>
+        </p>
+        <div>   
+            <img src="assets/project4/seq.png" width="80%"></img>
+        </div>
+        <a href="gitcommit.html" style="font-size:1.3em">Go to project website (Chrome recommended)</a>
+        <h3>Options</h3>
+        <ul>
+            <li>Chord progression
+                <ul>
+                   <li>I-IV-V in C major</li> 
+                   <li>Blues in A (A7, D7, E7)</li>
+                </ul>
+            </li>
+            <li>Instruments
+                <ul>
+                    <li>piano</li>
+                    <li>flue</li>
+                    <li>xylophone</li>
+                    <li>TR808</li>
+                </ul> 
+            </li>
+            <li>Themes
+                <ul>
+                    <li>christmas</li>
+                    <li>horror</li>
+                </ul> 
+            </li>
+            <li>Commit patterns: just in case your github commits sound terrible</li>
+        </ul>
+        <h3>Libraries, samples used</h3>
+        <ul>
+            <li><a href="https://tonejs.github.io/">Tone.js</a></li>
+            <li><a href="https://nexus-js.github.io/ui/">Nexus UI</a></li>
+            <li><a href="https://github.com/nbrosowsky/tonejs-instruments">https://github.com/nbrosowsky/tonejs-instruments</a></li>
+            <li><a href="http://smd-records.com/tr808/">http://smd-records.com/tr808/</a></li>
+        </ul>
+        <h3>Code (gitcommit.html, assets/project4/final.js)</h3>
+        <a href="http://www.github.com/kyungyunlee/ctp431">github</a>
+        <br>
+        <br>
+        <div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/sKNsAAuzi0g?vq=hd720" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </body>
+</html>
+
+
+
+
+<div class="splash">
+      <h1>Tree of Sound</h1>
+      <div class="splash-main">        
+        <p>Have some fun pretending you're a piano virtuoso using machine learning!</p>
+        <p>Use the <b>mouse</b> numbered keys on your keyboard the home row the coloured blocks to play the piano. Use the <b>space bar</b> to control the sustain pedal. The more
+          you pretend you're a real player, the better the melody (and you!) will sound.
+        </p>
+
+        <button class="splash-button loading" id="playBtn" disabled onclick="showMainScreen()" autofocus><span>Loading...</span></button>
+      </div>
+      <p class="built-with">
+        Built with <a target="_blank" href="https://magenta.tensorflow.org">magenta.js</a>, <a target="_blank" href="http://www.generative-gestaltung.de/1/code">generative-gestaltung</a>, <a target="_blank" href="https://tonejs.github.io/">tone.js</a> and <a target="_black" href="http://paperjs.org/">paper.js</a>.
+      </p>
+    </div>
