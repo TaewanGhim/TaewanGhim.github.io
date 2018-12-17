@@ -291,11 +291,11 @@ var MODES = [
 {
   color: { hue: 205, saturation: 70},
   filterQ: 1000,
-  gainRange: [0.1, 0.75],
+  gainRange: [0.1, 3],
   lengthRange: [10, 15],
   angleRange: [10,35],
-  maxLineLength: 8000,
-  growthFactor: 4,
+  maxLineLength: 5000,
+  growthFactor: 6,
   lSystem: {
     axiom: [
     {
