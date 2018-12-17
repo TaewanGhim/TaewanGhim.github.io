@@ -665,7 +665,7 @@ paper.view.onFrame = function (evt) {
         offshoot.angle,
         function (chr, from, to) {
           var width = Math.ceil(
-          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 50);
+          (chr.age + (chr.params.ageAcc || 0)) / MAX_GROWTH_TIME * 100);
 
           if (!offshoot.currentLines.hasOwnProperty(width)) {
             offshoot.currentLines[width] = [];
@@ -675,8 +675,8 @@ paper.view.onFrame = function (evt) {
 
       }
 
-      var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME / 2;
-      offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 5);
+      var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME ;
+      offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 3);
 
       ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);var _iteratorNormalCompletion4 = true;var _didIteratorError4 = false;var _iteratorError4 = undefined;try {
         for (var _iterator4 = Object.keys(offshoot.currentLines)[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {var width = _step4.value;
@@ -696,8 +696,13 @@ paper.view.onFrame = function (evt) {
 
 setInterval(function () {
   var totalX = 0,
-  pointCount = 0;var _iteratorNormalCompletion6 = true;var _didIteratorError6 = false;var _iteratorError6 = undefined;try {var _loop2 = function _loop2() {var
-      path = _step6.value;
+  pointCount = 0;
+  var _iteratorNormalCompletion6 = true;
+  var _didIteratorError6 = false;
+  var _iteratorError6 = undefined;
+  try {
+    var _loop2 = function _loop2() {
+      var path = _step6.value;
       if (!path.player) {
         var gain = new Tone.Gain(path.mode.gainRange[0]);
         var panner = new Tone.Panner();
