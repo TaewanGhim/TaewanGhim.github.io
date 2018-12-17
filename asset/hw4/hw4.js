@@ -676,7 +676,7 @@ paper.view.onFrame = function (evt) {
       }
 
       var hasBeenFadingFor = offshoot.age - MAX_GROWTH_TIME /2;
-      offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 3);
+      offshoot.alpha = Math.min(1, 1 - hasBeenFadingFor / 5);
 
       ctx.strokeStyle = getColorStr(mode.color, noteIndex, offshoot.alpha);
       var _iteratorNormalCompletion4 = true;
@@ -689,7 +689,7 @@ paper.view.onFrame = function (evt) {
           _iteratorNormalCompletion4 = true) {
           var width = _step4.value;
           ctx.beginPath();
-          ctx.lineWidth = width / 5;
+          ctx.lineWidth = width / 10;
           var _iteratorNormalCompletion5 = true;
           var _didIteratorError5 = false;
           var _iteratorError5 = undefined;
